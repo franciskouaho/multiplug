@@ -1,17 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>playful-repro-creator</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-    <meta property="og:image" content="/og-image.png" />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiPly - Automated Pricing Solution</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
 
-  <body>
-    <div id="root"></div>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* Container and section styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .section {
+            margin-bottom: 6rem;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .check-icon {
+            color: #3b82f6;
+            flex-shrink: 0;
+        }
+
+        /* Comparison grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .comparison-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: #666;
+        }
+
+        /* Waitlist section */
+        .waitlist-section {
+            max-width: 28rem;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-input {
+            flex: 1;
+            height: 2.5rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        .submit-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 2.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: white;
+            background-color: #3b82f6;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-button:hover {
+            background-color: #2563eb;
+        }
+
+        .waitlist-count {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* Steps section */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2rem;
+            height: 2rem;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Benefits section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        /* Story section */
+        .story-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .author-profile {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .author-image {
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* FAQ section */
+        .faq-section {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            color: #666;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group {
+                flex-direction: column;
+            }
+
+            .submit-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero Section -->
+    <section class="hero section">
+        <h1>Stop Manually Adjusting Prices—Automate and Focus on Growth.</h1>
+        <ul class="feature-list">
+            <li class="feature-item">
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <path d="M22 4L12 14.01l-3-3"></path>
+                </svg>
+                <span>AI-powered pricing that adapts monthly to market changes</span>
+            </li>
+            <li class="feature-item">
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <path d="M22 4L12 14.01l-3-3"></path>
+                </svg>
+                <span>Eliminate constant manual price tweaking and adjustments</span>
+            </li>
+            <li class="feature-item">
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <path d="M22 4L12 14.01l-3-3"></path>
+                </svg>
+                <span>Focus on growth while automation handles pricing optimization</span>
+            </li>
+        </ul>
+
+        <!-- Comparison Grid -->
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h3>Without MultiPly</h3>
+                <ul class="comparison-list">
+                    <li class="comparison-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                        <span>Wasting hours on manual analysis</span>
+                    </li>
+                    <li class="comparison-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                        <span>Losing revenue with outdated prices</span>
+                    </li>
+                    <li class="comparison-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                        <span>Missing growth opportunities</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="comparison-card">
+                <h3>With MultiPly</h3>
+                <ul class="comparison-list">
+                    <li class="comparison-item">
+                        <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <path d="M22 4L12 14.01l-3-3"></path>
+                        </svg>
+                        <span>Focus on scaling while pricing runs itself</span>
+                    </li>
+                    <li class="comparison-item">
+                        <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <path d="M22 4L12 14.01l-3-3"></path>
+                        </svg>
+                        <span>Maximize revenue with optimal pricing</span>
+                    </li>
+                    <li class="comparison-item">
+                        <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <path d="M22 4L12 14.01l-3-3"></path>
+                        </svg>
+                        <span>Data-based pricing optimization</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Waitlist Form -->
+        <div class="waitlist-section">
+            <form onsubmit="event.preventDefault(); window.location.href='https://forms.gle/YAEBMSFd7Q8CNjAC6';">
+                <div class="form-group">
+                    <input
+                            type="email"
+                            placeholder="Enter your email"
+                            class="email-input"
+                            required
+                    />
+                    <button type="submit" class="submit-button">
+                        <span>Join Waitlist</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+                <div class="waitlist-count">
+                    Join <span style="color: #3b82f6; font-weight: 600;">3</span> other early adopters on the waitlist
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="section">
+        <h2>How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Connect Your Tools</h3>
+                <p>Easily analyze data with your Google Analytics and sales tools for better insights.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Select Your Competitors</h3>
+                <p>Monitor how competitors are pricing their models, without wasting time or resources.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Test Advanced Automation</h3>
+                <p>Experiment with pricing AI to discover automatic dynamic pricing strategies.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Get Notified of Growth</h3>
+                <p>See exact systems in your own pricing models and make better growth decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section">
+        <h2>Why Choose MultiPly</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h3>Automated Pricing</h3>
+                <p>Save time with AI-powered pricing that adapts to market changes automatically.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Data-Driven Decisions</h3>
+                <p>Make pricing decisions based on real customer data and market trends.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Competitive Edge</h3>
+                <p>Stay ahead of competitors with dynamic pricing strategies.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Revenue Growth</h3>
+                <p>Increase revenue by optimizing prices for different customer segments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="section">
+        <h2>Why This Matters</h2>
+        <div class="story-card">
+            <div class="author-profile">
+                <div class="author-image">
+                    <img src="https://placehold.co/400x400/png" alt="Founder's profile" />
+                </div>
+                <div>
+                    <h3>Hey, it's Adam</h3>
+                    <p>Founder of MultiPly</p>
+                </div>
+            </div>
+            <p>In Spring 2023, while taking a break from manually tweaking my SaaS product's pricing, I noticed how much time I was spending on pricing instead of focusing on growth.</p>
+            <br>
+            <p>Why? All that effort was reached its limit without AI or other models. That's why we built MultiPly—to make pricing experiments simple:</p>
+            <br>
+            <ul style="list-style: none; margin-left: 1rem;">
+                <li>• Fast pricing without coding</li>
+                <li>• Better decisions with real-time data</li>
+                <li>• Test pricing without disrupting customers</li>
+                <li>• Use real data to find product-market fit faster</li>
+            </ul>
+            <br>
+            <p>It's the tool I wish I had—saving time, reducing frustration, and letting you focus on growth.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question">Will testing new pricing models affect my current customers?</div>
+            <div class="faq-answer">No, your existing customers will keep their current plans while you explore pricing options.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What happens to my data when I stop using the tool?</div>
+            <div class="faq-answer">You can export all your pricing data and analytics at any time.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How long does it take to set up?</div>
+            <div class="faq-answer">Most customers are up and running in less than 5 minutes.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Can I integrate this with my current tools?</div>
+            <div class="faq-answer">Yes, we offer integrations with popular platforms and custom API access.</div>
+        </div>
+    </section>
+</div>
+
+<script>
+    // Simple FAQ toggle functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+        });
+    });
+</script>
+</body>
 </html>
