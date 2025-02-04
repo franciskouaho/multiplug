@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Multiplog - Pricing Automation</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+
+            /* Header */
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 2rem;
+                border-bottom: 1px solid #eee;
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .logo img {
+                width: 32px;
+                height: 32px;
+            }
+
+            nav {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: #666;
+            }
+
+            .login-btn {
+                padding: 0.5rem 1rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                background: white;
+                cursor: pointer;
+            }
+
+            /* Hero Section */
+            .hero {
+                text-align: center;
+                padding: 4rem 1rem;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                color: #666;
+                margin-bottom: 2rem;
+            }
+
+            .features {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+
+            .feature {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            /* Comparison Section */
+            .comparison {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+
+            .card {
+                padding: 2rem;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+            }
+
+            .card.with {
+                border-color: #22c55e;
+            }
+
+            .card-header {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .card ul {
+                list-style: none;
+                color: #666;
+            }
+
+            .card li {
+                margin-bottom: 0.5rem;
+            }
+
+            /* Steps Section */
+            .steps {
+                max-width: 1200px;
+                margin: 4rem auto;
+                padding: 0 2rem;
+                text-align: center;
+            }
+
+            .steps h2 {
+                margin-bottom: 3rem;
+            }
+
+            .steps-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+            }
+
+            .step {
+                text-align: center;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                background: #e0f2fe;
+                color: #0284c7;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1rem;
+                font-weight: bold;
+            }
+
+            /* Testimonial Section */
+            .testimonial {
+                max-width: 800px;
+                margin: 4rem auto;
+                padding: 2rem;
+                display: flex;
+                gap: 2rem;
+                align-items: flex-start;
+            }
+
+            .testimonial-image {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .testimonial-content h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .testimonial-content p {
+                color: #666;
+                margin-bottom: 1rem;
+                line-height: 1.6;
+            }
+
+            .testimonial-content ul {
+                list-style: none;
+                margin-bottom: 1rem;
+            }
+
+            .testimonial-content li {
+                margin-bottom: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .testimonial-content li:before {
+                content: "•";
+                color: #666;
+            }
+
+            /* FAQ Section */
+            .faq {
+                max-width: 800px;
+                margin: 4rem auto;
+                padding: 0 2rem;
+            }
+
+            .faq h2 {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .faq-item {
+                border-bottom: 1px solid #ddd;
+                padding: 1rem 0;
+            }
+
+            .faq-question {
+                font-weight: bold;
+                cursor: pointer;
+                padding: 1rem 0;
+            }
+
+            /* CTA Section */
+            .cta {
+                text-align: center;
+                padding: 4rem 1rem;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .button {
+                display: inline-block;
+                padding: 0.75rem 1.5rem;
+                background: #0284c7;
+                color: white;
+                border-radius: 4px;
+                text-decoration: none;
+                margin-top: 1rem;
+            }
+
+            @media (max-width: 768px) {
+                header {
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                nav {
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                .comparison {
+                    grid-template-columns: 1fr;
+                }
+
+                .steps-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .testimonial {
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                }
+
+                .testimonial-content li {
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture%20d%E2%80%99e%CC%81cran%202025-02-03%20a%CC%80%2012.00.38-AJgHCkArOvxskNbAWAoZuAY2rEUOM8.png"
+                    alt="Logo"
+                />
+                <span>Multiplog</span>
+            </div>
+            <nav>
+                <a href="#">Product</a>
+                <a href="#">Price</a>
+                <a href="#">About us</a>
+                <button class="login-btn">Login</button>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>
+                Stop Manually Adjusting Prices—Automate and Focus on Growth.
+            </h1>
+            <p>
+                Save time and money with AI-powered pricing that adapts
+                instantly, eliminating the need to constantly monitor/adjust
+                Stripe or Paddle prices manually.
+            </p>
+            <div class="features">
+                <div class="feature">
+                    <span>✓</span>
+                    <span>Seamless Stripe Integration</span>
+                </div>
+                <div class="feature">
+                    <span>✓</span>
+                    <span>Powered by Real Data</span>
+                </div>
+            </div>
+            <a href="#" class="button">Join our waiting list</a>
+        </section>
+
+        <section class="comparison">
+            <div class="card">
+                <div class="card-header">
+                    <span>✗</span>
+                    <h3>Without Multiplog</h3>
+                </div>
+                <ul>
+                    <li>• Wasting hours on manual updates</li>
+                    <li>• Losing revenue with outdated models</li>
+                    <li>• Sticking to outdated pricing because it's "safe"</li>
+                    <li>
+                        • Making blind assumptions instead of data-driven
+                        decisions
+                    </li>
+                    <li>• Wasting time on manual price changes</li>
+                </ul>
+            </div>
+            <div class="card with">
+                <div class="card-header">
+                    <span>✓</span>
+                    <h3>With Multiplog</h3>
+                </div>
+                <ul>
+                    <li>• Focus on scaling while pricing runs itself</li>
+                    <li>• Save hours with automated pricing</li>
+                    <li>• Stay competitive with dynamic pricing</li>
+                    <li>
+                        • Make smarter decisions with real-time, AI-driven
+                        insights
+                    </li>
+                    <li>
+                        • Adjusting pricing automatically with real-time data
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="steps">
+            <h2>Discover your perfect pricing model in just 4 simple steps</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Connect Your Tools</h3>
+                    <p>
+                        Easily integrate Stripe and Google Analytics to
+                        centralize your data.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Select Your Competitors</h3>
+                    <p>
+                        Manually choose the competitors you want to track for
+                        accurate market insights.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Test, Automate & Optimize</h3>
+                    <p>
+                        Experiment with pricing, let AI adjust dynamically, and
+                        refine your strategy.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Get Notified of Your Growth</h3>
+                    <p>
+                        Get instant updates on how your pricing boosts revenue
+                        and growth.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonial">
+            <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture%20d%E2%80%99e%CC%81cran%202025-02-04%20a%CC%80%2008.40.21-epJByRBhvOOK6B4tUSeIC9r8bkGm5n.png"
+                alt="Photo d'Adama"
+                class="testimonial-image"
+            />
+            <div class="testimonial-content">
+                <h2>Hey, it's Adama</h2>
+                <p>
+                    In January 2025, a friend spent 4-5 days manually tweaking
+                    his code and reconfiguring Stripe to adjust his pricing.
+                    After all that effort, he realized he still needed to try
+                    other models.
+                </p>
+                <p>
+                    The process was slow, frustrating, and left no time for
+                    marketing, improving his product, or talking to customers.
+                </p>
+                <p>
+                    That's why I built Multiplog—to make pricing experiments
+                    simple. With Multiplog, founders can:
+                </p>
+                <ul>
+                    <li>Test pricing without coding</li>
+                    <li>Experiment safely without disrupting customers</li>
+                    <li>Use real data to find product-market fit faster</li>
+                </ul>
+                <p>
+                    It's the tool I wish he'd had—saving time, reducing
+                    frustration, and letting him focus on growth.
+                </p>
+            </div>
+        </section>
+
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Will testing new pricing models affect my current customers?
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What happens to my data after the trial ends?
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How long does it take to set up and run tests?
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Stop Guessing Your Pricing.<br />Start Scaling Smart.</h2>
+            <p>
+                Get instant insights from real-time experiments and build
+                exactly what your customers need.
+            </p>
+            <a href="#" class="button">Find your pricing models</a>
+        </section>
+    </body>
+</html>
