@@ -107,6 +107,27 @@
             color: #666;
         }
 
+        .video-section {
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 854px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         /* Waitlist section */
         .waitlist-section {
             max-width: 28rem;
@@ -370,12 +391,14 @@
         <div class="waitlist-section">
             <form onsubmit="event.preventDefault(); window.location.href='https://forms.gle/YAEBMSFd7Q8CNjAC6';">
                 <div class="form-group">
-                    <input
-                            type="email"
-                            placeholder="Enter your email"
-                            class="email-input"
-                            required
-                    />
+                    <label>
+                        <input
+                                type="email"
+                                placeholder="Enter your email"
+                                class="email-input"
+                                required
+                        />
+                    </label>
                     <button type="submit" class="submit-button">
                         <span>Join Waitlist</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -388,6 +411,14 @@
                     Join <span style="color: #3b82f6; font-weight: 600;">3</span> other early adopters on the waitlist
                 </div>
             </form>
+        </div>
+    </section>
+
+    <section class="video-section section">
+        <div class="video-container">
+            <video autoplay loop muted playsinline>
+                <source src="multiplug.mp4" type="video/mp4">
+            </video>
         </div>
     </section>
 
@@ -447,7 +478,7 @@
         <div class="story-card">
             <div class="author-profile">
                 <div class="author-image">
-                    <img src="/adama.jpeg" alt="Founder's profile" />
+                    <img src="adama.jpeg" alt="Founder's profile" />
                 </div>
                 <div>
                     <h3>Hey, it's Adama</h3>
